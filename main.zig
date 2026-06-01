@@ -7,7 +7,7 @@ const PORT = 8080;
 const MAX_FILE_SIZE = 2 * 1024 * 1024 * 1024;
 const DAILY_LIMIT = 32 * 1024 * 1024 * 1024;
 const CHUNK_SIZE = 1024 * 1024;
-const DEFAULT_RETENTION_SEC = 30 * 60;
+const DEFAULT_RETENTION_SEC = 48 * 60 * 60;
 const DATA_DIR = "/data";
 
 fn parseTtl(ttl: []const u8) i64 {
@@ -242,7 +242,7 @@ fn handleChunk(conn: std.net.StreamServer.Connection, headers: []const u8, reque
     defer allocator.free(filename);
 
     const ttl = blk: {
-        const val = getHeader(headers, "X-Ttl: ") orelse "30m";
+        const val = getHeader(headers, "X-Ttl: ") orelse "48h";
         break :blk try allocator.dupe(u8, val);
     };
     defer allocator.free(ttl);
