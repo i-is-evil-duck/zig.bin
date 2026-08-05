@@ -4,7 +4,7 @@ const time = std.time;
 const Uri = std.Uri;
 
 const PORT = 8080;
-const MAX_FILE_SIZE = 5 * 1024 * 1024 * 1024;
+const MAX_FILE_SIZE = 15 * 1024 * 1024 * 1024;
 const DAILY_LIMIT = 32 * 1024 * 1024 * 1024;
 const CHUNK_SIZE = 1024 * 1024;
 const DEFAULT_RETENTION_SEC = 48 * 60 * 60;
